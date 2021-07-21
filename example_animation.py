@@ -71,6 +71,6 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,frames=np.size(t), i
 Writer = animation.writers['ffmpeg']
 writer = Writer(fps=30, metadata=dict(artist='Me'), bitrate=1800)
 
-#anim.save('Video.mp4', writer=writer)
+anim.save('Video.mp4', writer=writer)
 
-plt.show()
+#plt.show()
