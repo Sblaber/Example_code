@@ -1,0 +1,5 @@
+Example code showing how to animate your simulations
+
+Example_animation.py is a simplified code for animating time dependent variable and will output an MP4 file
+
+Langevin_quad.py simulates driven barrier crossing under optimal control in the quadratic approximation https://doi.org/10.1103/PhysRevE.106.L022103 using Euler-Muryama method. It outputs an MP4 file animation of the average position and variance on the energy landscape. It also plots the quantiles of the position distribution as a function of time which can be viewed by running the code interactively.
