@@ -1,22 +1,23 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+V_B = 8 # Scale of energy barriers
 # Define the energy landscape and its gradient
 def energy_landscape(x, y):
     """Energy function U(x, y)"""
-    return (x**2 - 1)**2 + (y**2 - 1)**2
+    return V_B*(x**2 - 1)**2 + V_B*(y**2 - 1)**2
 
 def gradient_energy(x, y):
     """Gradient of U(x, y)"""
-    dU_dx = 4 * x * (x**2 - 1)
-    dU_dy = 4 * y * (y**2 - 1)
+    dU_dx = V_B * 4 * x * (x**2 - 1)
+    dU_dy = V_B * 4 * y * (y**2 - 1)
     return np.stack((dU_dx, dU_dy), axis=-1)  # Return a 2D array for all particles
 
 # Simulation parameters
 dt = 0.01  # Time step
 gamma = 1.0  # Friction coefficient
-kT = 0.1  # Thermal energy
-n_steps = 10000  # Number of time steps
+kT = 2  # Thermal energy
+n_steps = 1000  # Number of time steps
 n_particles = 1  # Number of particles
 x_limits = [-2.0, 2.0]  # x-axis bounds
 y_limits = [-2.0, 2.0]  # y-axis bounds
@@ -63,15 +64,15 @@ X, Y = np.meshgrid(x, y)
 U = energy_landscape(X, Y)
 
 plt.figure(figsize=(10, 8))
-plt.contourf(X, Y, U, levels=50, cmap="viridis")
+plt.contourf(X, Y, U, levels=50, cmap="coolwarm")
 plt.colorbar(label="Energy")
 
 # Plot particle trajectories
 for i in range(n_particles):
-    plt.plot(trajectories[:, i, 0], trajectories[:, i, 1], lw=1)
+    plt.plot(trajectories[:, i, 0], trajectories[:, i, 1], lw=2, color='k')
 
-plt.scatter(trajectories[0, :, 0], trajectories[0, :, 1], color='red', label='Start', zorder=5)
-plt.scatter(trajectories[-1, :, 0], trajectories[-1, :, 1], color='blue', label='End', zorder=5)
+plt.scatter(trajectories[0, :, 0], trajectories[0, :, 1], color='w',s=128, label='Start', zorder=5)
+plt.scatter(trajectories[-1, :, 0], trajectories[-1, :, 1], color='m',s =128, label='End', zorder=5)
 plt.xlabel("x")
 plt.ylabel("y")
 plt.legend()
