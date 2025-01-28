@@ -17,7 +17,7 @@ dt = 0.01  # Time step
 gamma = 1.0  # Friction coefficient
 kT = 0.1  # Thermal energy
 n_steps = 10000  # Number of time steps
-n_particles = 10  # Number of particles
+n_particles = 1  # Number of particles
 x_limits = [-2.0, 2.0]  # x-axis bounds
 y_limits = [-2.0, 2.0]  # y-axis bounds
 
